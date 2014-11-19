@@ -20,4 +20,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  belongs_to :role
+  delegate :admin?,:faculty?,:student?, to: :role
+
 end

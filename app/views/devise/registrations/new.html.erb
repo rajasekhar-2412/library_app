@@ -3,23 +3,23 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f| %>
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.email_field :email, class: "form-control devise" %>
+          <%= f.email_field :email, class: "form-control devise", required: true  %>
         </div>
 
         <div class="form-group">
         <%= f.label :username %>
-        <%= f.text_field :username, class: "form-control devise" %>
+        <%= f.text_field :username, class: "form-control devise", required: true  %>
         </div>
 
           <div class="form-group">
         <%= f.label :password %><br />
-        <%= f.password_field :password, class: "form-control devise" %>
+        <%= f.password_field :password, class: "form-control devise" , required: true %>
         <span id ="text">Password Strength: </span><span id="passstrength"></span>
           </div>
 
             <div class="form-group">
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: "form-control devise" %>
+        <%= f.password_field :password_confirmation, class: "form-control devise" , required: true %>
         <span id="passwd_check"></span>
             </div>
       <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
@@ -27,9 +27,13 @@
     <% end %>
   </div>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
 
 <script>
+    $(document).ready(function(){
+        $("#text").hide();
+    });
+
     $('#user_password').keyup(function(e) {
         $("#text").show();
         $('#passstrength').show();
