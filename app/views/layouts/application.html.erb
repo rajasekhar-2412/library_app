@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyLibrary</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "My Library", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav pull-right">
+        <% if current_user %>
+            <li class="divider"></li>
+            <li><%= link_to 'Books', books_path %></li>
+            <li><%= link_to 'Authors', authors_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to 'Departments', departments_path %></li>
+            <li class="divider"></li>
+                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                <li class="divider"></li>
+              </ul>
+        <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+            <li><%= link_to 'Register', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>

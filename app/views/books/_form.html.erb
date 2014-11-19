@@ -1,0 +1,12 @@
+<%= simple_form_for @book, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@book[:name]) %>
+  <%= f.input :author_id %>
+  <%= error_span(@book[:author_id]) %>
+  <%= f.input :branch_id %>
+  <%= error_span(@book[:branch_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                books_path, :class => 'btn btn-default' %>
+<% end %>
